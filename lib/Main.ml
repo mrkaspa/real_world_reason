@@ -11,8 +11,12 @@ let divisible_by (by: int) (n: int): bool =
 let even: int -> bool =
   divisible_by 2
 
+let filter funi ls =
+  List.filter ls funi
+
 let count_pairs (ls: int list): int =
-  List.filter ls even
+  ls
+  |> filter even
   |> List.length
 
 let sum_if_true (test: int -> bool) (first: int) (second: int): int =

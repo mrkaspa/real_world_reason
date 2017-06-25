@@ -2,7 +2,7 @@ open Core.Std
 
 let add2 x = x + 2
 
-let ratio x y =
+let ratio ~x ~y =
   Float.of_int x /. Float.of_int y
 
 let divisible_by (by: int) (n: int): bool =
@@ -11,12 +11,9 @@ let divisible_by (by: int) (n: int): bool =
 let even: int -> bool =
   divisible_by 2
 
-let filter funi ls =
-  List.filter ls funi
-
 let count_pairs (ls: int list): int =
   ls
-  |> filter even
+  |> List.filter ~f: even
   |> List.length
 
 let sum_if_true (test: int -> bool) (first: int) (second: int): int =
@@ -25,5 +22,5 @@ let sum_if_true (test: int -> bool) (first: int) (second: int): int =
 
 let run () =
   Printf.printf "sum if even %d\n" (sum_if_true even 1 2);
-  Printf.printf "%f\n" (ratio 1 2);
+  Printf.printf "%f\n" (ratio ~x:1 ~y:2);
   Printf.printf "counting pairs %d\n" (count_pairs [1; 2; 3; 4]);

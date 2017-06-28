@@ -18,7 +18,7 @@ let count_pairs (ls: int list): int =
   (* |> List.filter ~f: (fun a -> (a mod 2) = 0) *)
   |> List.length
 
-let sum_if_true (test: int -> bool) (first: int) (second: int): int =
+let sum_if_true (test: int -> bool) (first: int) (second:int): int =
   (if test first then first else 0)
   + (if test second then second else 0)
 
@@ -75,10 +75,12 @@ let run () =
   Printf.printf "sum rec %d\n" (sum_rec [1; 2; 3; 4]);
   Printf.printf "sum point %f\n" (sum_point { x = 1.; y = 2. });
   Printf.printf "area circle %f\n" (area_geom (Circle { center = { x = 1.; y = 2. }; r = 2. }));
-  !+ refi1;
-  !+ refi1;
-  !+ refi1;
+  !+refi1;
+  !+refi1;
+  !+refi1;
   Printf.printf "refi %d\n" !refi1;
+  Demo.funi None;
+  Run.run ();
   (match (hd [1; 2; 3]) with
   | Some n -> Printf.printf "safe head %d\n" n
   | _ -> Printf.printf "not found");

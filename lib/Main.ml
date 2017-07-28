@@ -81,6 +81,7 @@ let run () =
   Printf.printf "refi %d\n" !refi1;
   Demo.funi None;
   Run.run ();
+  Sub.Demi.say "demo";
   (match (hd [1; 2; 3]) with
   | Some n -> Printf.printf "safe head %d\n" n
   | _ -> Printf.printf "not found");

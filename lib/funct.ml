@@ -45,9 +45,12 @@ module Make_incrementor (A : Summable) (M : Summer with type t = A.t) : (Increme
   let inc n = M.sum n A.unit
 end
 
+
 module Int_incrementor = Make_incrementor (IntSummable) (IntSummer)
 
 module Float_incrementor = Make_incrementor (FloatSummable) (FloatSummer)
+
+let int_inc = (module Int_incrementor : Incrementor with type t = int)
 
 let increment (type a) ((module A) : (module Incrementor with type t = a)) (n : a) =
   A.inc n
@@ -59,6 +62,6 @@ let increment_twice (type a) ((module A) : (module Incrementor with type t = a))
   apply_twice (increment (module A)) n
 
 let () =
-  printf "int %d\n" (increment (module Int_incrementor) 10);
+  printf "int %d\n" (increment int_inc 10);
   printf "float %f\n" (increment (module Float_incrementor) 10.);
   printf "float twice %f\n" (increment_twice (module Float_incrementor) 10.);

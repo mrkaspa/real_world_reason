@@ -82,6 +82,7 @@ let run () =
   Demo.funi None;
   Run.run ();
   Sub.Demi.say "demo";
+  Monoid.run ();
   (match (hd [1; 2; 3]) with
    | Some n -> Printf.printf "safe head %d\n" n
    | _ -> Printf.printf "not found");

@@ -1,7 +1,7 @@
-open Core.Std
+open Core
 
 let build_counts () =
-  In_channel.fold_lines stdin ~init:Map_counter.empty ~f:Map_counter.touch
+  In_channel.fold_lines In_channel.stdin ~init:Map_counter.empty ~f:Map_counter.touch
 
 let run_counts () =
   build_counts ()

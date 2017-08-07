@@ -1,4 +1,4 @@
-open Core.Std
+open Core
 
 let add2 x = x + 2
 
@@ -79,7 +79,6 @@ let run () =
   !+refi1;
   !+refi1;
   Printf.printf "refi %d\n" !refi1;
-  Demo.funi None;
   Run.run ();
   Sub.Demi.say "demo";
   Monoid.run ();

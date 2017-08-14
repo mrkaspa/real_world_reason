@@ -1,4 +1,4 @@
-open Core
+open Core.Std
 
 let build_counts () =
   In_channel.fold_lines In_channel.stdin ~init:Map_counter.empty ~f:Map_counter.touch

@@ -1,4 +1,4 @@
-open Core
+open Core.Std
 
 let add2 x = x + 2
 

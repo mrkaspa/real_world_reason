@@ -1,4 +1,4 @@
-open Core
+open Core.Std
 
 module Ord = struct
   type t =
@@ -32,8 +32,8 @@ module Make_interval (Endpoint : Comparable) : (Interval_iface with type endpoin
     else Interval (low, high)
 
   let is_empty = (function
-    | Empty -> true
-    | Interval _ -> false)
+      | Empty -> true
+      | Interval _ -> false)
 
   let contains t x =
     match t with
@@ -43,14 +43,14 @@ module Make_interval (Endpoint : Comparable) : (Interval_iface with type endpoin
 end
 
 module IntInterval = Make_interval (struct
-  type t = int
-  let compare i1 i2 =
-    match Int.compare i1 i2 with
-    | 0  -> Ord.EQ
-    | 1  -> Ord.GT
-    | -1 -> Ord.LT
-    | _  -> Ord.EQ
-end)
+    type t = int
+    let compare i1 i2 =
+      match Int.compare i1 i2 with
+      | 0  -> Ord.EQ
+      | 1  -> Ord.GT
+      | -1 -> Ord.LT
+      | _  -> Ord.EQ
+  end)
 
 let () =
   let open IntInterval in

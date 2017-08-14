@@ -1,4 +1,4 @@
-open Core
+open Core.Std
 
 let safe_div n d =
   if d = 0 then

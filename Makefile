@@ -4,6 +4,9 @@ build:
 run: build
 	jbuilder exec real_world
 
+run-web: build-all
+	jbuilder exec wmain
+
 test:
 	jbuilder runtest
 

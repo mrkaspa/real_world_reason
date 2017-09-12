@@ -2,6 +2,6 @@
 (jbuild_version 1)
 
 (executables (
-  (names (real_world))
-  (public_names (real_world))
+  (names (real_world demo))
+  (public_names (real_world demo))
   (libraries (lib))))

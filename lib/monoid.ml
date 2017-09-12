@@ -21,7 +21,9 @@ end
 
 type 'a monoid_a = (module Monoid with type t = 'a)
 
-let sumi (type a) ((module A) : (module Monoid with type t = a)) (n : a) =
+(* another signature *)
+(* let sumi (type a) ((module A) : (module Monoid with type t = a)) (n : a) = *)
+let sumi (type a) ((module A) : (a monoid_a)) (n : a) =
   A.mappend n A.mempty
 
 let (Sum res) =

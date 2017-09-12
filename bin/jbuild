@@ -2,6 +2,6 @@
 (jbuild_version 1)
 
 (executables (
-  (names (real_world wmain))
-  (public_names (real_world wmain))
-  (libraries (lib opium.unix))))
+  (names (real_world))
+  (public_names (real_world))
+  (libraries (lib))))

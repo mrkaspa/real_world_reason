@@ -1,5 +1,6 @@
+
 (jbuild_version 1)
 
 (library (
   (name lib)
-  (libraries (core sub))))
+  (libraries (re core sub))))

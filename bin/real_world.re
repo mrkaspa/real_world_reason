@@ -1,1 +1,1 @@
-Lib.Main.run ();
+Lib.Main.run();

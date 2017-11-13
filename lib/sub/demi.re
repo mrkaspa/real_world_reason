@@ -1,1 +1,1 @@
-let say name => print_string ("Hello from sub: " ^ name);
+let say = (name) => print_string("Hello from sub: " ++ name);

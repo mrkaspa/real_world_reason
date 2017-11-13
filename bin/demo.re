@@ -1,14 +1,15 @@
 open Core.Std;
 
-let say_hello = (name) => {
-  let name = "michel";
-  print_string("Hola mundo " ++ (name ++ "\n"))
-};
+let say_hello = (~name: string="demo") => print_string("Hola mundo " ++ (name ++ "\n"));
 
 let () = {
+  let prt = (elem) => print_string(string_of_int(elem) ++ "\n");
+  List.iter(List.range(1, 10), prt);
   for (i in 0 to 10) {
-    say_hello()
+    say_hello(~name="Michel")
   };
-  List.iter(List.range(1, 10), (elem) => print_string(string_of_int(elem)));
+  if (1 == 1) {
+    print_string("eoo")
+  };
   ()
 };

@@ -1,6 +1,6 @@
 open Core.Std;
 
-let add2 = (x) => x + 2;
+let add2 = x => x + 2;
 
 let ratio = (~x, ~y) => Float.of_int(x) /. Float.of_int(y);
 
@@ -18,32 +18,32 @@ let count_pairs = (ls: list(int)) : int =>
 let sum_if_true = (test: int => bool, first: int, second: int) : int =>
   (
     if (test(first)) {
-      first
+      first;
     } else {
-      0
+      0;
     }
   )
   + (
     if (test(second)) {
-      second
+      second;
     } else {
-      0
+      0;
     }
   );
 
-let hd = (ls) =>
+let hd = ls =>
   switch ls {
   | [a, ..._] => Some(a)
   | _ => None
   };
 
-let sum_rec = (elems) => {
+let sum_rec = elems => {
   let rec sumi = (acc, elems) =>
     switch elems {
     | [x, ...xs] => sumi(acc + x, xs)
     | _ => acc
     };
-  sumi(0, elems)
+  sumi(0, elems);
 };
 
 type point2d = {
@@ -69,19 +69,19 @@ type geom =
 let area_geom = (geom: geom) =>
   switch geom {
   | Point(_) => 0.
-  | Circle({center: {x: x1, y: y1}, r}) => 3.1416 *. (r ** 2.)
+  | Circle({center: {x: x1, y: y1}, r}) => 3.1416 *. r ** 2.
   | Rect({p1: {x: x1, y: y1}, p2: {x: x2, y: y2}}) => x1 *. x2 *. y1 *. y2
   };
 
 type refi('a) = {mutable content: 'a};
 
-let refi = (x) => {content: x};
+let refi = x => {content: x};
 
-let (^) = (r) => r.content;
+let (^) = r => r.content;
 
 let (:=) = (r, x) => r.content = x;
 
-let (!+) = (r) => r := r^ + 1;
+let (!+) = r => r := r^ + 1;
 
 let sum_point = ({x: x1, y: y1}) => x1 +. y1;
 
@@ -92,7 +92,16 @@ let run = () => {
   Printf.printf("counting pairs %d\n", count_pairs([1, 2, 3, 4]));
   Printf.printf("sum rec %d\n", sum_rec([1, 2, 3, 4]));
   Printf.printf("sum point %f\n", sum_point({x: 1., y: 2.}));
-  Printf.printf("area circle %f\n", area_geom(Circle({center: {x: 1., y: 2.}, r: 2.})));
+  Printf.printf(
+    "area circle %f\n",
+    area_geom(Circle({
+                center: {
+                  x: 1.,
+                  y: 2.
+                },
+                r: 2.
+              }))
+  );
   !+refi1;
   !+refi1;
   !+refi1;
@@ -103,5 +112,5 @@ let run = () => {
   switch (hd([1, 2, 3])) {
   | Some(n) => Printf.printf("safe head %d\n", n)
   | _ => Printf.printf("not found")
-  }
+  };
 };

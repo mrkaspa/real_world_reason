@@ -19,15 +19,17 @@ module type Interval_iface = {
   let contains: (t, endpoint) => bool;
 };
 
-module Make_interval = (Endpoint: Comparable) : (Interval_iface with type endpoint := Endpoint.t) => {
+module Make_interval =
+       (Endpoint: Comparable)
+       : (Interval_iface with type endpoint := Endpoint.t) => {
   type t =
     | Interval(Endpoint.t, Endpoint.t)
     | Empty;
   let create = (low, high) =>
     if (Endpoint.compare(low, high) == Ord.GT) {
-      Empty
+      Empty;
     } else {
-      Interval(low, high)
+      Interval(low, high);
     };
   let is_empty =
     fun
@@ -61,5 +63,5 @@ let () = {
   switch inter {
   | Interval(low, high) => printf("Interval %d - %d", low, high)
   | Empty => print_string("Empty interval")
-  }
+  };
 };

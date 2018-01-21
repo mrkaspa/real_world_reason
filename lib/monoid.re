@@ -29,5 +29,5 @@ let res2 = string_of_int(sumi((module ProdMonoid), 1));
 
 let run = () => {
   print_string("sumi => " ++ res1);
-  print_string("prodi => " ++ res2)
+  print_string("prodi => " ++ res2);
 };

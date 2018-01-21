@@ -32,7 +32,7 @@ module Make_incrementor =
        (A: Summable, M: Summer with type t = A.t)
        : (Incrementor with type t = A.t) => {
   include M;
-  let inc = (n) => M.sum(n, A.unit);
+  let inc = n => M.sum(n, A.unit);
 };
 
 module Int_incrementor = Make_incrementor(IntSummable, IntSummer);
@@ -41,15 +41,18 @@ module Float_incrementor = Make_incrementor(FloatSummable, FloatSummer);
 
 let int_inc: (module Incrementor with type t = int) = (module Int_incrementor);
 
-let increment = (type a, (module A): (module Incrementor with type t = a), n: a) => A.inc(n);
+let increment =
+    (type a, (module A): (module Incrementor with type t = a), n: a) =>
+  A.inc(n);
 
 let apply_twice = (f, n) => f(f(n));
 
-let increment_twice = (type a, (module A): (module Incrementor with type t = a), n: a) =>
+let increment_twice =
+    (type a, (module A): (module Incrementor with type t = a), n: a) =>
   apply_twice(increment((module A)), n);
 
 let () = {
   printf("int %d\n", increment(int_inc, 10));
   printf("float %f\n", increment((module Float_incrementor), 10.));
-  printf("float twice %f\n", increment_twice((module Float_incrementor), 10.))
+  printf("float twice %f\n", increment_twice((module Float_incrementor), 10.));
 };

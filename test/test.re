@@ -4,5 +4,5 @@ let test2 = () => assert (Lib.Main.add2(5) === 7);
 
 {
   test1();
-  test2()
+  test2();
 };

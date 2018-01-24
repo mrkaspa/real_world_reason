@@ -7,6 +7,9 @@ run: build
 run-demo: build
 	jbuilder exec --workspace jbuild-workspace.dev demo
 
+run-csv: build
+	jbuilder exec csv_read
+
 test:
 	jbuilder runtest
 

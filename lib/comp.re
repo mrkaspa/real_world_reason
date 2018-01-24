@@ -59,7 +59,7 @@ module IntInterval =
 
 let () = {
   open IntInterval;
-  let inter = IntInterval.create(10, 2);
+  let inter = create(10, 2);
   switch inter {
   | Interval(low, high) => printf("Interval %d - %d", low, high)
   | Empty => print_string("Empty interval")

@@ -11,25 +11,25 @@ let even: int => bool = divisible_by(2);
 let count_pairs = (ls: list(int)) : int =>
   ls
   |> List.filter(~f=even)
-  /* |> List.filter ~f: (divisible_by 2) */
-  /* |> List.filter ~f: (fun a -> (a mod 2) = 0) */
+  |> List.filter(~f=divisible_by(2))
+  |> List.filter(~f=a => a mod 2 == 0)
   |> List.length;
 
-let sum_if_true = (test: int => bool, first: int, second: int) : int =>
-  (
+let sum_if_true = (test: int => bool, first: int, second: int) : int => {
+  let f1 =
     if (test(first)) {
       first;
     } else {
       0;
-    }
-  )
-  + (
+    };
+  let f2 =
     if (test(second)) {
       second;
     } else {
       0;
-    }
-  );
+    };
+  f1 + f2;
+};
 
 let hd = ls =>
   switch ls {

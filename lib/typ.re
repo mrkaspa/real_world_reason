@@ -10,7 +10,8 @@ module Username: {
   let to_string = x => x;
 };
 
-let print_name = (name: Username.t) => print_string(Username.to_string(name));
+let print_name = (name: Username.t) =>
+  print_string(Username.to_string(name));
 
 module type ID = {
   type t;
@@ -31,13 +32,13 @@ module Hostname: ID = String_id;
 type session_info = {
   user: Usernami.t,
   host: Hostname.t,
-  when_started: Time.t
+  when_started: Time.t,
 };
 
 let create_session = (username, host) => {
   user: username,
   host,
-  when_started: Time.now()
+  when_started: Time.now(),
 };
 
 let id_to_string = (type a, (module B): (module ID with type t = a), id: a) =>
@@ -48,7 +49,7 @@ module Logon = {
     session_id: string,
     time: Time.t,
     user: string,
-    credentials: string
+    credentials: string,
   };
 };
 
@@ -58,6 +59,6 @@ let () = {
   let session =
     create_session(Usernami.of_string("demo"), Hostname.of_string("host"));
   print_string(
-    "The username is " ++ id_to_string((module Usernami), session.user)
+    "The username is " ++ id_to_string((module Usernami), session.user),
   );
 };

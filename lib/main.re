@@ -8,6 +8,8 @@ let divisible_by = (by: int, n: int) : bool => n mod by == 0;
 
 let even: int => bool = divisible_by(2);
 
+let x = ls => ls |> List.map(_, a => a + 1) |> List.filter(_, a => a == 2);
+
 let count_pairs = (ls: list(int)) : int =>
   ls
   |> List.filter(~f=even)
@@ -32,14 +34,14 @@ let sum_if_true = (test: int => bool, first: int, second: int) : int => {
 };
 
 let hd = ls =>
-  switch ls {
+  switch (ls) {
   | [a, ..._] => Some(a)
   | _ => None
   };
 
 let sum_rec = elems => {
   let rec sumi = (acc, elems) =>
-    switch elems {
+    switch (elems) {
     | [x, ...xs] => sumi(acc + x, xs)
     | _ => acc
     };
@@ -48,17 +50,17 @@ let sum_rec = elems => {
 
 type point2d = {
   x: float,
-  y: float
+  y: float,
 };
 
 type circle = {
   center: point2d,
-  r: float
+  r: float,
 };
 
 type rect = {
   p1: point2d,
-  p2: point2d
+  p2: point2d,
 };
 
 type geom =
@@ -67,7 +69,7 @@ type geom =
   | Rect(rect);
 
 let area_geom = (geom: geom) =>
-  switch geom {
+  switch (geom) {
   | Point(_) => 0.
   | Circle({center: {x: x1, y: y1}, r}) => 3.1416 *. r ** 2.
   | Rect({p1: {x: x1, y: y1}, p2: {x: x2, y: y2}}) => x1 *. x2 *. y1 *. y2
@@ -97,10 +99,10 @@ let run = () => {
     area_geom(Circle({
                 center: {
                   x: 1.,
-                  y: 2.
+                  y: 2.,
                 },
-                r: 2.
-              }))
+                r: 2.,
+              })),
   );
   !+refi1;
   !+refi1;

@@ -36,10 +36,11 @@ module Make_interval =
     | Empty => true
     | Interval(_) => false;
   let contains = (t, x) =>
-    switch t {
+    switch (t) {
     | Empty => false
     | Interval(low, high) =>
-      Endpoint.compare(x, low) == Ord.GT && Endpoint.compare(x, high) == Ord.LT
+      Endpoint.compare(x, low) == Ord.GT
+      && Endpoint.compare(x, high) == Ord.LT
     };
 };
 
@@ -54,13 +55,13 @@ module IntInterval =
         | (-1) => Ord.LT
         | _ => Ord.EQ
         };
-    }
+    },
   );
 
 let () = {
   open IntInterval;
   let inter = create(10, 2);
-  switch inter {
+  switch (inter) {
   | Interval(low, high) => printf("Interval %d - %d", low, high)
   | Empty => print_string("Empty interval")
   };

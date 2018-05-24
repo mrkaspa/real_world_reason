@@ -15,4 +15,5 @@ let add_with_default = (t, ~key, ~fn, ~default) => {
   Map.add(t, ~key, ~data=new_val);
 };
 
-let touch = (t, s) => add_with_default(t, ~key=s, ~fn=n => n + 1, ~default=0);
+let touch = (t, s) =>
+  add_with_default(t, ~key=s, ~fn=n => n + 1, ~default=0);

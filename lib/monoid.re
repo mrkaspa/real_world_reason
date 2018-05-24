@@ -19,7 +19,8 @@ type monoid_a('a) = (module Monoid with type t = 'a);
 
 /* another signature */
 /* let sumi (type a) ((module A) : (module Monoid with type t = a)) (n : a) = */
-let sumi = (type a, (module A): monoid_a(a), n: a) => A.mappend(n, A.mempty);
+let sumi = (type a, (module A): monoid_a(a), n: a) =>
+  A.mappend(n, A.mempty);
 
 let Sum(res) = sumi((module SumMonoid), Sum(1));
 

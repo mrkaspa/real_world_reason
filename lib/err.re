@@ -19,17 +19,19 @@ let unsafe_div = (n, d) =>
 let use_safe_div = () => {
   open Result.Monad_infix;
   let res = safe_div(1, 1) >>= (res => Ok(res + 1));
-  switch res {
+  switch (res) {
   | Ok(res) => printf("The res %d", res)
   | Error(error) => printf("Err %s", Error.to_string_hum(error))
   };
 };
 
 let use_unsafe_div = () =>
-  try {
-    let res = unsafe_div(1, 0);
-    printf("The res %d", res);
-  } {
+  try (
+    {
+      let res = unsafe_div(1, 0);
+      printf("The res %d", res);
+    }
+  ) {
   | DemoEx(msg) => printf("Err %s", msg)
   };
 

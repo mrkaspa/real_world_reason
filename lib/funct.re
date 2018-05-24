@@ -54,5 +54,8 @@ let increment_twice =
 let () = {
   printf("int %d\n", increment(int_inc, 10));
   printf("float %f\n", increment((module Float_incrementor), 10.));
-  printf("float twice %f\n", increment_twice((module Float_incrementor), 10.));
+  printf(
+    "float twice %f\n",
+    increment_twice((module Float_incrementor), 10.),
+  );
 };

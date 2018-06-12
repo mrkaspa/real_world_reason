@@ -7,6 +7,15 @@ module Ord = {
     | LT;
 };
 
+let action = () => {
+  let env1 = true;
+  if (env1) {
+    `Ok;
+  } else {
+    `Nothing;
+  };
+};
+
 module type Comparable = {type t; let compare: (t, t) => Ord.t;};
 
 module type Interval_iface = {
@@ -45,18 +54,16 @@ module Make_interval =
 };
 
 module IntInterval =
-  Make_interval(
-    {
-      type t = int;
-      let compare = (i1, i2) =>
-        switch (Int.compare(i1, i2)) {
-        | 0 => Ord.EQ
-        | 1 => Ord.GT
-        | (-1) => Ord.LT
-        | _ => Ord.EQ
-        };
-    },
-  );
+  Make_interval({
+    type t = int;
+    let compare = (i1, i2) =>
+      switch (Int.compare(i1, i2)) {
+      | 0 => Ord.EQ
+      | 1 => Ord.GT
+      | (-1) => Ord.LT
+      | _ => Ord.EQ
+      };
+  });
 
 let () = {
   open IntInterval;

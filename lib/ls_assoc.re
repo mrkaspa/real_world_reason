@@ -4,7 +4,7 @@ let digit_alist = [(0, "zero")];
 
 let find_in_assoc = n => {
   let res = List.Assoc.find(~equal=(==), digit_alist, n);
-  switch res {
+  switch (res) {
   | Some(a) => a
   | None => "not"
   };

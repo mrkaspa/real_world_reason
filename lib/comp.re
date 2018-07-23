@@ -16,13 +16,18 @@ let action = () => {
   };
 };
 
-module type Comparable = {type t; let compare: (t, t) => Ord.t;};
+module type Comparable = {
+  type t;
+
+  let compare: (t, t) => Ord.t;
+};
 
 module type Interval_iface = {
   type endpoint;
   type t =
     | Interval(endpoint, endpoint)
     | Empty;
+
   let create: (endpoint, endpoint) => t;
   let is_empty: t => bool;
   let contains: (t, endpoint) => bool;
@@ -56,6 +61,7 @@ module Make_interval =
 module IntInterval =
   Make_interval({
     type t = int;
+
     let compare = (i1, i2) =>
       switch (Int.compare(i1, i2)) {
       | 0 => Ord.EQ

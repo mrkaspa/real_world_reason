@@ -1,11 +1,15 @@
 open Core.Std;
 
-module Username: {
+module type UsernameType = {
   type t;
+
   let of_string: string => t;
   let to_string: t => string;
-} = {
+};
+
+module Username: UsernameType = {
   type t = string;
+
   let of_string = x => x;
   let to_string = x => x;
 };
@@ -15,12 +19,14 @@ let print_name = (name: Username.t) =>
 
 module type ID = {
   type t;
+
   let of_string: string => t;
   let to_string: t => string;
 };
 
 module String_id = {
   type t = string;
+
   let of_string = x => x;
   let to_string = x => x;
 };

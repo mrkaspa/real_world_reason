@@ -1,6 +1,7 @@
 open Core.Std;
 
-let say_hello = (name: string) => print_string("Hola mundo " ++ name ++ "\n");
+let say_hello = (name: string) =>
+  print_string("Hola mundo " ++ name ++ "\n");
 
 let prt = elem => print_string(string_of_int(elem) ++ "\n");
 

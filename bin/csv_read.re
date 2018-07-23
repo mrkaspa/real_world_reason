@@ -8,7 +8,7 @@ let embedded_csv = "\"Banner clickins\"\n\"Clickin\",\"Number\",\"Percentage\",\
 let csvs =
   List.map(
     ~f=name => (name, Csv.load(name)),
-    ["examples/example1.csv", "examples/example2.csv"]
+    ["examples/example1.csv", "examples/example2.csv"],
   );
 
 let sum_percentage = csv =>
@@ -24,7 +24,7 @@ let sum_percentage = csv =>
           | None => acc
           },
       csv,
-      0.0
+      0.0,
     )
   );
 
@@ -34,7 +34,7 @@ let () = {
   Csv.print_readable(ecsv);
   printf(
     "---Sum Percentage %f\n",
-    sum_percentage(Csv.of_string(embedded_csv))
+    sum_percentage(Csv.of_string(embedded_csv)),
   );
   List.iter(
     ~f=
@@ -42,6 +42,6 @@ let () = {
         printf("---%s----------------------------------------\n", name);
         Csv.print_readable(csv);
       },
-    csvs
+    csvs,
   );
 };

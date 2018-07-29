@@ -8,7 +8,8 @@ let divisible_by = (by: int, n: int) : bool => n mod by == 0;
 
 let even: int => bool = divisible_by(2);
 
-let x = ls => ls |> List.map(_, a => a + 1) |> List.filter(_, a => a == 2);
+let x = ls =>
+  ls |> List.map(_, ~f=a => a + 1) |> List.filter(_, ~f=a => a == 2);
 
 let count_pairs = (ls: list(int)) : int =>
   ls
@@ -71,7 +72,7 @@ type geom =
 let area_geom = (geom: geom) =>
   switch (geom) {
   | Point(_) => 0.
-  | Circle({center: {x: x1, y: y1}, r}) => 3.1416 *. r ** 2.
+  | Circle({center: {x: _x1, y: _y1}, r}) => 3.1416 *. r ** 2.
   | Rect({p1: {x: x1, y: y1}, p2: {x: x2, y: y2}}) => x1 *. x2 *. y1 *. y2
   };
 

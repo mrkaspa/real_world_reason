@@ -1,0 +1,4 @@
+(executables
+  (names real_world demo csv_read)
+  (public_names real_world demo csv_read)
+  (libraries re lib core csv))

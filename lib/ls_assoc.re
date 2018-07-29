@@ -11,7 +11,8 @@ let find_in_assoc = n => {
 };
 
 let find_in_map = () => {
-  let digit_map = Map.of_alist_exn(Core.Std.Int.comparator, digit_alist);
+  let digit_map =
+    Map.of_alist_exn(~comparator=Core.Std.Int.comparator, digit_alist);
   digit_map
   |> Map.add(~key=1, ~data="one")
   |> (m => Map.find(m, 1))

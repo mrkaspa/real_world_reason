@@ -6,9 +6,9 @@ let say_hello = (name: string) =>
 let prt = elem => print_string(string_of_int(elem) ++ "\n");
 
 let _ = {
-  List.iter(List.range(1, 10), prt);
+  List.iter(List.range(1, 10), ~f=prt);
   let count = ref(0);
-  for (i in 0 to 10) {
+  for (_i in 0 to 10) {
     count := count^ + 1;
     say_hello("Michel");
   };

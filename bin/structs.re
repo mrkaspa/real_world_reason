@@ -18,6 +18,7 @@ let _ = {
   let tree = Map.to_tree(map);
   let valueOpt = Map.Tree.find(~comparator=cmp, tree, 1);
   print_value(valueOpt);
+
   /* Using Sets */
   let ls = [2, 2, 1, 2, 4, 5, 4, 3];
   let dd = dedup(~comparator=Int.comparator, ls);
